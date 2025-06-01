@@ -1,86 +1,128 @@
-# Loja do Seu Manoel - API de Empacotamento
+﻿# Loja do Seu Manoel - API de Empacotamento
 
-API desenvolvida para automatizar o processo de empacotamento de pedidos da loja do Seu Manoel.
+API REST em ASP.NET Core 8, desenvolvida para automatizar o processo de empacotamento de pedidos da loja do Seu Manoel.
 
-A aplica��o recebe uma lista de produtos com dimens�es e retorna quais caixas devem ser utilizadas, otimizando o uso do espa�o.
+Dado um pedido com uma lista de produtos e suas dimensões, a aplicação calcula automaticamente quais caixas devem ser utilizadas, otimizando o uso do espaço.
 
 ---
 
-## ? Pr�-requisitos
+##  Tecnologias Utilizadas
+
+- ASP.NET Core 8
+- Entity Framework Core 9
+- SQL Server 2022
+- JWT (autenticação)
+- BCrypt (criptografia de senha)
+- xUnit (testes unitários)
+- Docker + Docker Compose
+- Swagger/OpenAPI
+
+---
+
+## Pré-requisitos
 
 - Docker
 - Docker Compose
 
 ---
 
-## ?? Como rodar a aplica��o
+## Como executar a aplicação
 
-1. Clone o reposit�rio:
+### 1. Clone o repositório
+
 ```bash
 git clone https://github.com/seu-usuario/LojaDoSeuManoel.git
 cd LojaDoSeuManoel
 ```
 
-2. Rode com Docker Compose:
+### 2. Rode os containers com Docker Compose
+
 ```bash
 docker-compose up --build
 ```
 
-3. Acesse o Swagger em:
+> Isso irá subir a API e o banco de dados. As migrations são aplicadas automaticamente no startup.
+
+### 3. Acesse a documentação Swagger
+
 ```
 http://localhost:5000/swagger
 ```
 
 ---
 
-## ?? Autentica��o
+## Autenticação (JWT)
 
-Para acessar os endpoints protegidos (como `/api/Pedidos/empacotar`), voc� precisa:
+Para acessar os endpoints protegidos, siga os passos:
 
-1. Criar um usu�rio via:
-```
-POST /api/Auth/register
-```
+1. **Registre um novo usuário:**
+   ```
+   POST /api/Auth/register
+   ```
 
-2. Fazer login com:
-```
-POST /api/Auth/login
-```
+2. **Realize o login para obter o token:**
+   ```
+   POST /api/Auth/login
+   ```
 
-3. Copiar o token JWT retornado e clicar em **"Authorize"** no Swagger, colando assim:
-```
-Bearer seu_token_aqui
-```
-
----
-
-## ?? Endpoints principais
-
-- `POST /api/Auth/register` ? Cria usu�rio
-- `POST /api/Auth/login` ? Gera token
-- `POST /api/Pedidos/empacotar` ? Retorna caixas e produtos organizados
+3. **Copie o token JWT** e clique no botão **"Authorize"** no Swagger, usando o formato:
+   ```
+   Bearer seu_token_aqui
+   ```
 
 ---
 
-## ?? Containers gerados
+## Endpoints principais
 
-- **API**: ASP.NET Core 8
-- **Banco de dados**: SQL Server 2022
-
----
-
-## ?? Diferenciais implementados
-
-- ? Autentica��o com JWT e senha com BCrypt
-- ? Endpoints protegidos com `[Authorize]`
-- ? Swagger configurado para uso com token
-- ? L�gica real de empacotamento com m�ltiplas caixas
-- ? Entidades bem modeladas e banco com dados `Seed`
-- ? Docker Compose pronto para uso imediato
+| Método | Rota                       | Descrição                              |
+|--------|----------------------------|----------------------------------------|
+| POST   | `/api/Auth/register`       | Cria novo usuário                      |
+| POST   | `/api/Auth/login`          | Gera token de autenticação             |
+| POST   | `/api/Pedidos/empacotar`   | Retorna quais caixas serão usadas      |
 
 ---
 
-## ?? Observa��es finais
+## Testes Unitários
 
-- Projeto segue princ�pios de Clean Architecture
-- Ideal para ambientes de teste e demonstra��o t�cnica
+O projeto inclui uma suite de testes unitários desenvolvida com **xUnit**.
+
+### Como executar os testes (fora do container):
+
+```bash
+dotnet test
+```
+
+> Os testes verificam a lógica de empacotamento (alocação correta de produtos em caixas).
+
+---
+
+## Containers gerados
+
+- `api`: Projeto ASP.NET Core + Swagger
+- `sqlserver`: Banco de dados SQL Server 2022
+
+---
+
+## Diferenciais implementados
+
+- ✅ Autenticação via JWT
+- ✅ Criptografia de senha com BCrypt
+- ✅ Migrations aplicadas automaticamente no startup
+- ✅ Lógica real de empacotamento por volume (múltiplas caixas)
+- ✅ Swagger com suporte para autenticação JWT
+- ✅ Testes unitários cobrindo a lógica de empacotamento
+- ✅ Docker Compose com ambiente pronto para testes
+
+---
+
+## Observações finais
+
+- Projeto segue boas práticas de Clean Code e separação de responsabilidades
+- Ideal para avaliações técnicas e demonstrações em ambientes controlados
+- Nenhuma configuração adicional necessária após `docker-compose up --build`
+
+---
+
+## Contato
+
+> Desenvolvido por [Seu Nome ou GitHub](https://github.com/seu-usuario)
