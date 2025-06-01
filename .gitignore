@@ -1,0 +1,32 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+out/
+*.dll
+*.exe
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Dotnet tools
+**/TestResults/
+**/*.db
+
+# Docker
+*.pid
+*.mdf
+*.ldf
+
+# Secrets (por precaução, não subir senhas locais)
+secrets.json
+
+# Config files
+appsettings.*.json

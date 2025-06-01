@@ -1,0 +1,6 @@
+@EmbaladorPedidosApi_HostAddress = http://localhost:5034
+
+GET {{EmbaladorPedidosApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
