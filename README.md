@@ -120,9 +120,3 @@ dotnet test
 - Projeto segue boas práticas de Clean Code e separação de responsabilidades
 - Ideal para avaliações técnicas e demonstrações em ambientes controlados
 - Nenhuma configuração adicional necessária após `docker-compose up --build`
-
----
-
-## Contato
-
-> Desenvolvido por [Seu Nome ou GitHub](https://github.com/seu-usuario)
