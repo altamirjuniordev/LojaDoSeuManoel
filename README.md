@@ -31,7 +31,7 @@ Dado um pedido com uma lista de produtos e suas dimensões, a aplicação calcul
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/LojaDoSeuManoel.git
+git clone https://github.com/altamirjuniordev/LojaDoSeuManoel.git
 cd LojaDoSeuManoel
 ```
 
